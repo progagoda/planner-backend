@@ -2,20 +2,46 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type BoardEntity {
+  background: String
+  id: ID!
+  name: String!
+  scopeId: String!
+}
+
+input CreateBoardInput {
+  background: String
+  name: String!
+  scopeId: String!
+}
+
 input CreateUserInput {
   email: String!
   name: String
 }
 
 type Mutation {
-  createUser(createUserInput: CreateUserInput!): UserEntitity!
+  createBoard(createBoardInput: CreateBoardInput!): BoardEntity!
+  createUser(createUserInput: CreateUserInput!): UserEntity!
+  deleteBoard(id: Float!): Float!
   deleteUser(id: Float!): Float!
-  updateUser(updateUserInput: UpdateUserInput!): UserEntitity!
+  updateBoard(updateBoardInput: UpdateBoardInput!): BoardEntity!
+  updateUser(updateUserInput: UpdateUserInput!): UserEntity!
 }
 
 type Query {
-  getAllUsers: [UserEntitity!]!
-  getOneUser(id: Float!): UserEntitity!
+  getAllBoards: [BoardEntity!]!
+  getAllUsers: [UserEntity!]!
+  getBoardById(id: Float!): BoardEntity!
+  getBoardsByScopeId(scopeId: String!): [BoardEntity!]!
+  getOneUser(id: Float!): UserEntity!
+}
+
+input UpdateBoardInput {
+  background: String
+  id: ID!
+  name: String
+  scopeId: String
 }
 
 input UpdateUserInput {
@@ -24,7 +50,7 @@ input UpdateUserInput {
   name: String
 }
 
-type UserEntitity {
+type UserEntity {
   email: String!
   id: ID!
   name: String

@@ -19,7 +19,7 @@ import { BoardsModule } from './boards/boards.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (config: ConfigService) => ({
-        type: config.get<'aurora-mysql'>('TYPEORM_CONNECTION'),
+        type: config.get<'postgres'>('TYPEORM_CONNECTION'),
         host: config.get<string>('TYPEORM_HOST'),
         username: config.get<string>('TYPEORM_USERNAME'),
         password: config.get<string>('TYPEORM_PASSWORD'),
@@ -29,6 +29,9 @@ import { BoardsModule } from './boards/boards.module';
         synchronize: true,
         autoLoadEntities: true,
         logging: true,
+        ssl: {
+          rejectUnauthorized: false,
+        },
       }),
     }),
     UsersModule,

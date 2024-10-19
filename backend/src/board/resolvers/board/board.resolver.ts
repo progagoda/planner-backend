@@ -35,7 +35,7 @@ export class BoardResolver {
     return await this.boardService.getAllBoards();
   }
   @Query(() => [BoardEntity])
-  async getBoardsByScopeId(
+  async getBoardByScopeId(
     @Args('scopeId') scopeId: string,
   ): Promise<BoardEntity[]> {
     return await this.boardService.getBoardsByScopeId(scopeId);

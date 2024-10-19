@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity('board')
-export class BoardEntity {
+export class ColumnEntity {
   @IsNumber()
   @Field(() => ID)
   @PrimaryGeneratedColumn()
@@ -18,9 +18,5 @@ export class BoardEntity {
   @IsString()
   @Field({ nullable: false })
   @Column({ nullable: true })
-  scopeId: string;
-
-  @Field({ nullable: true })
-  @Column({ nullable: true })
-  background: string;
+  boardId: string;
 }

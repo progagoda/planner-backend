@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   db:
-    container_name: postgres-next
+    container_name: planner-postgres
     image: postgres:14.0-alpine
     restart: always
     environment:
@@ -14,7 +14,6 @@ services:
     ports:
       - ${TYPEORM_PORT}:${TYPEORM_PORT}
   backend:
-    container_name: backend-next
     build:
       context: ./backend
     depends_on: 

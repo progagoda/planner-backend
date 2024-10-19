@@ -9,32 +9,56 @@ type BoardEntity {
   scopeId: String!
 }
 
+type CardEntity {
+  columnId: String!
+  createdDate: String!
+  description: String
+  id: ID!
+  name: String!
+}
+
+type ColumnEntity {
+  boardId: String!
+  id: ID!
+  name: String!
+}
+
 input CreateBoardInput {
   background: String
   name: String!
   scopeId: String!
 }
 
-input CreateUserInput {
-  email: String!
-  name: String
+input CreateCardInput {
+  columnId: String!
+  name: String!
+}
+
+input CreateColumnInput {
+  boardId: String!
+  name: String!
 }
 
 type Mutation {
   createBoard(createBoardInput: CreateBoardInput!): BoardEntity!
-  createUser(createUserInput: CreateUserInput!): UserEntity!
+  createCard(createCardInput: CreateCardInput!): CardEntity!
+  createColumn(createColumnInput: CreateColumnInput!): ColumnEntity!
   deleteBoard(id: Float!): Float!
-  deleteUser(id: Float!): Float!
+  deleteCard(id: Float!): Float!
+  deleteColumn(id: Float!): Float!
   updateBoard(updateBoardInput: UpdateBoardInput!): BoardEntity!
-  updateUser(updateUserInput: UpdateUserInput!): UserEntity!
+  updateCard(updateCardInput: UpdateCardInput!): CardEntity!
+  updateColumn(updateColumnInput: UpdateColumnInput!): ColumnEntity!
 }
 
 type Query {
   getAllBoards: [BoardEntity!]!
-  getAllUsers: [UserEntity!]!
+  getAllCards: [CardEntity!]!
+  getAllColumns: [ColumnEntity!]!
   getBoardById(id: Float!): BoardEntity!
-  getBoardsByScopeId(scopeId: String!): [BoardEntity!]!
-  getOneUser(id: Float!): UserEntity!
+  getBoardByScopeId(scopeId: String!): [BoardEntity!]!
+  getOneCard(id: Float!): CardEntity!
+  getOneColumn(id: Float!): ColumnEntity!
 }
 
 input UpdateBoardInput {
@@ -44,14 +68,14 @@ input UpdateBoardInput {
   scopeId: String
 }
 
-input UpdateUserInput {
-  email: String
+input UpdateCardInput {
+  columnId: String!
+  description: String
   id: ID!
   name: String
 }
 
-type UserEntity {
-  email: String!
+input UpdateColumnInput {
   id: ID!
-  name: String
+  name: String!
 }

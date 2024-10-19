@@ -3,8 +3,8 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
-@Entity('board')
-export class BoardEntity {
+@Entity('card')
+export class CardEntity {
   @IsNumber()
   @Field(() => ID)
   @PrimaryGeneratedColumn()
@@ -17,10 +17,16 @@ export class BoardEntity {
 
   @IsString()
   @Field({ nullable: false })
-  @Column({ nullable: true })
-  scopeId: string;
+  @Column({ nullable: false })
+  columnId: string;
 
+  @IsString()
+  @Field({ nullable: false })
+  @Column({ nullable: false })
+  createdDate: string;
+
+  @IsString()
   @Field({ nullable: true })
   @Column({ nullable: true })
-  background: string;
+  description: string;
 }

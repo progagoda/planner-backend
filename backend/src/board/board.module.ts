@@ -8,4 +8,4 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [TypeOrmModule.forFeature([BoardEntity])],
   providers: [BoardResolver, BoardService],
 })
-export class BoardsModule {}
+export class BoardModule {}

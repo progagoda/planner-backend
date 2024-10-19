@@ -3,8 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { UsersModule } from './users/users.module';
-import { BoardsModule } from './boards/boards.module';
+import { ColumnModule } from './column/column.module';
+import { CardModule } from './card/card.module';
+import { BoardModule } from './board/board.module';
 
 @Module({
   imports: [
@@ -34,8 +35,9 @@ import { BoardsModule } from './boards/boards.module';
         },
       }),
     }),
-    UsersModule,
-    BoardsModule,
+    BoardModule,
+    ColumnModule,
+    CardModule,
   ],
 })
 export class AppModule {}

@@ -11,6 +11,6 @@ export class UpdateCardInput {
   @Field({ nullable: true })
   description: string;
 
-  @Field({ nullable: false })
-  columnId: string;
+  @Field({ nullable: true })
+  columnId: number;
 }

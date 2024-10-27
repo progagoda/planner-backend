@@ -3,7 +3,7 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
-@Entity('board')
+@Entity('column')
 export class ColumnEntity {
   @IsNumber()
   @Field(() => ID)

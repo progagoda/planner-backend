@@ -21,7 +21,7 @@ export class BoardService {
   }
 
   async getBoardsByScopeId(scopeId: string): Promise<BoardEntity[]> {
-    return await this.boardRepository.find({ where: { scopeId: scopeId } });
+    return await this.boardRepository.find({ where: { scopeId } });
   }
 
   async getAllBoards(): Promise<BoardEntity[]> {

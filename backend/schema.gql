@@ -10,7 +10,7 @@ type BoardEntity {
 }
 
 type CardEntity {
-  columnId: String!
+  columnId: Float
   createdDate: String!
   description: String
   id: ID!
@@ -30,7 +30,7 @@ input CreateBoardInput {
 }
 
 input CreateCardInput {
-  columnId: String!
+  columnId: Float!
   name: String!
 }
 
@@ -57,7 +57,9 @@ type Query {
   getAllColumns: [ColumnEntity!]!
   getBoardById(id: Float!): BoardEntity!
   getBoardByScopeId(scopeId: String!): [BoardEntity!]!
-  getOneCard(id: Float!): CardEntity!
+  getCardById(id: Float!): CardEntity!
+  getCardsByColumnId(columnId: Float!): [CardEntity!]!
+  getColumnsByBoardId(boardId: String!): [ColumnEntity!]!
   getOneColumn(id: Float!): ColumnEntity!
 }
 
@@ -69,7 +71,7 @@ input UpdateBoardInput {
 }
 
 input UpdateCardInput {
-  columnId: String!
+  columnId: Float
   description: String
   id: ID!
   name: String

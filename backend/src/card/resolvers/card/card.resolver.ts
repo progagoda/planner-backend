@@ -40,12 +40,19 @@ export class CardResolver {
   }
 
   @Query(() => CardEntity)
-  async getOneCard(@Args('id') id: number): Promise<CardEntity> {
-    return await this.cardService.getOneCard(id);
+  async getCardById(@Args('id') id: number): Promise<CardEntity> {
+    return await this.cardService.getCardById(id);
   }
 
   @Query(() => [CardEntity])
   async getAllCards(): Promise<CardEntity[]> {
     return await this.cardService.getAllCards();
+  }
+
+  @Query(() => [CardEntity])
+  async getCardsByColumnId(
+    @Args('columnId') columnId: number,
+  ): Promise<CardEntity[]> {
+    return await this.cardService.getCardsByColumnId(columnId);
   }
 }

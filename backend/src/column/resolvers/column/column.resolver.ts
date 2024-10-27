@@ -3,10 +3,14 @@ import { CreateColumnInput } from '../../inputs/create-column-input';
 import { UpdateColumnInput } from '../../inputs/update-column-input';
 import { ColumnEntity } from '../../../entities/column.entity';
 import { ColumnService } from '../../services/column/column.service';
+import { CardService } from 'src/card/services/card/card.service';
 
 @Resolver('Column')
 export class ColumnResolver {
-  constructor(private readonly columnService: ColumnService) {}
+  constructor(
+    private readonly columnService: ColumnService,
+    private readonly cardService: CardService,
+  ) {}
 
   @Mutation(() => ColumnEntity)
   async createColumn(
@@ -23,6 +27,11 @@ export class ColumnResolver {
 
   @Mutation(() => Number)
   async deleteColumn(@Args('id') id: number): Promise<number> {
+    const cards = await this.cardService.getCardsByColumnId(id);
+    cards.forEach(
+      async (card) =>
+        await this.cardService.updateCard({ ...card, columnId: null }),
+    );
     return await this.columnService.deleteColumn(id);
   }
 
@@ -34,5 +43,12 @@ export class ColumnResolver {
   @Query(() => [ColumnEntity])
   async getAllColumns(): Promise<ColumnEntity[]> {
     return await this.columnService.getAllColumns();
+  }
+
+  @Query(() => [ColumnEntity])
+  async getColumnsByBoardId(
+    @Args('boardId') boardId: string,
+  ): Promise<ColumnEntity[]> {
+    return await this.columnService.getColumnsByBoardId(boardId);
   }
 }

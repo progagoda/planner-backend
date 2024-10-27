@@ -19,8 +19,12 @@ export class CardService {
     });
   }
 
-  async getOneCard(id: number): Promise<CardEntity> {
+  async getCardById(id: number): Promise<CardEntity> {
     return await this.cardRepository.findOne({ where: { id: id } });
+  }
+
+  async getCardsByColumnId(columnId: number): Promise<CardEntity[]> {
+    return await this.cardRepository.find({ where: { columnId } });
   }
 
   async getAllCards(): Promise<CardEntity[]> {
@@ -28,7 +32,7 @@ export class CardService {
   }
 
   async deleteCard(id: number): Promise<number> {
-    await this.cardRepository.delete({ id: id });
+    await this.cardRepository.delete(id);
     return id;
   }
 

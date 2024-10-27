@@ -16,9 +16,9 @@ export class CardEntity {
   name: string;
 
   @IsString()
-  @Field({ nullable: false })
-  @Column({ nullable: false })
-  columnId: string;
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  columnId: number;
 
   @IsString()
   @Field({ nullable: false })

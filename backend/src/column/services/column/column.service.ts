@@ -20,23 +20,32 @@ export class ColumnService {
     return await this.columnRepository.findOne({ where: { id: id } });
   }
 
+  async getColumnsByBoardId(boardId: string): Promise<ColumnEntity[]> {
+    return await this.columnRepository.find({ where: { boardId } });
+  }
+
   async getAllColumns(): Promise<ColumnEntity[]> {
     return await this.columnRepository.find();
   }
 
   async deleteColumn(id: number): Promise<number> {
-    await this.columnRepository.delete({ id: id });
+    await this.columnRepository.delete({ id });
     return id;
   }
 
   async updateColumn(
     updateColumnInput: UpdateColumnInput,
   ): Promise<ColumnEntity> {
-    await this.columnRepository.update(updateColumnInput.id, {
-      ...updateColumnInput,
-    });
+    await this.columnRepository.update(
+      {
+        id: Number(updateColumnInput.id),
+      },
+      {
+        name: updateColumnInput.name,
+      },
+    );
     return await this.columnRepository.findOne({
-      where: { id: updateColumnInput.id },
+      where: { id: Number(updateColumnInput.id) },
     });
   }
 }

@@ -25,6 +25,11 @@ export class CardEntity {
   @Column({ nullable: false })
   createdDate: string;
 
+  @IsNumber()
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  positionIndex: number;
+
   @IsString()
   @Field({ nullable: true })
   @Column({ nullable: true })

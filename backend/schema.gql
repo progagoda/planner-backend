@@ -15,12 +15,14 @@ type CardEntity {
   description: String
   id: ID!
   name: String!
+  positionIndex: Float
 }
 
 type ColumnEntity {
   boardId: String!
   id: ID!
   name: String!
+  positionIndex: Float
 }
 
 input CreateBoardInput {
@@ -75,9 +77,11 @@ input UpdateCardInput {
   description: String
   id: ID!
   name: String
+  positionIndex: Float
 }
 
 input UpdateColumnInput {
   id: ID!
-  name: String!
+  name: String
+  positionIndex: Float
 }

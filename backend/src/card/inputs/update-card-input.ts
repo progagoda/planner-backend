@@ -13,4 +13,7 @@ export class UpdateCardInput {
 
   @Field({ nullable: true })
   columnId: number;
+
+  @Field({ nullable: true })
+  positionIndex: number;
 }

@@ -13,7 +13,15 @@ export class ColumnService {
   ) {}
 
   async createColumn(columnInput: CreateColumnInput): Promise<ColumnEntity> {
-    return await this.columnRepository.save(columnInput);
+    const maxPositionIndex = await this.columnRepository
+      .createQueryBuilder('column')
+      .select('MAX(column.positionIndex)', 'max')
+      .getRawOne();
+
+    return await this.columnRepository.save({
+      ...columnInput,
+      positionIndex: maxPositionIndex.max ? maxPositionIndex.max + 1 : 0,
+    });
   }
 
   async getOneColumn(id: number): Promise<ColumnEntity> {
@@ -36,12 +44,21 @@ export class ColumnService {
   async updateColumn(
     updateColumnInput: UpdateColumnInput,
   ): Promise<ColumnEntity> {
+    const params = Object.entries(updateColumnInput).reduce<UpdateColumnInput>(
+      (acc, [key, value]) => {
+        if (typeof value !== 'undefined') {
+          acc[key as keyof UpdateColumnInput] = value as never;
+        }
+        return acc;
+      },
+      {} as UpdateColumnInput,
+    );
     await this.columnRepository.update(
       {
         id: Number(updateColumnInput.id),
       },
       {
-        name: updateColumnInput.name,
+        ...params,
       },
     );
     return await this.columnRepository.findOne({

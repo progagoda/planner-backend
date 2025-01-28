@@ -15,6 +15,11 @@ export class ColumnEntity {
   @Column({ nullable: false })
   name: string;
 
+  @IsNumber()
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  positionIndex: number;
+
   @IsString()
   @Field({ nullable: false })
   @Column({ nullable: true })

@@ -30,9 +30,9 @@ import { BoardModule } from './board/board.module';
         synchronize: true,
         autoLoadEntities: true,
         logging: true,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        // ssl: {
+        //   rejectUnauthorized: false,
+        // },
       }),
     }),
     BoardModule,

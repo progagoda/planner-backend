@@ -13,8 +13,14 @@ export class CardService {
   ) {}
 
   async createCard(cardInput: CreateCardInput): Promise<CardEntity> {
+    const maxPositionIndex = await this.cardRepository
+      .createQueryBuilder('card')
+      .select('MAX(card.positionIndex)', 'max')
+      .where('card.columnId = :columnId', { columnId: cardInput.columnId })
+      .getRawOne();
     return await this.cardRepository.save({
       createdDate: Date.now().toString(),
+      positionIndex: (maxPositionIndex.max || 0) + 1,
       ...cardInput,
     });
   }

@@ -5,6 +5,9 @@ export class UpdateColumnInput {
   @Field(() => ID)
   id: number;
 
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   name: string;
+
+  @Field({ nullable: true })
+  positionIndex: number;
 }

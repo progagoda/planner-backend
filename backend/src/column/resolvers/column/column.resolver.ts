@@ -3,7 +3,7 @@ import { CreateColumnInput } from '../../inputs/create-column-input';
 import { UpdateColumnInput } from '../../inputs/update-column-input';
 import { ColumnEntity } from '../../../entities/column.entity';
 import { ColumnService } from '../../services/column/column.service';
-import { CardService } from 'src/card/services/card/card.service';
+import { CardService } from '../../../card/services/card/card.service';
 
 @Resolver('Column')
 export class ColumnResolver {

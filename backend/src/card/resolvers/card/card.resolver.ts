@@ -3,7 +3,7 @@ import { CreateCardInput } from '../../inputs/create-card-input';
 import { UpdateCardInput } from '../../inputs/update-card-input';
 import { CardService } from '../../services/card/card.service';
 import { CardEntity } from '../../../entities/card.entity';
-import { ColumnService } from 'src/column/services/column/column.service';
+import { ColumnService } from '../../../column/services/column/column.service';
 import { HttpException, HttpStatus } from '@nestjs/common';
 
 @Resolver()

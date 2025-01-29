@@ -3,7 +3,7 @@ import { BoardService } from '../../services/board/board.service';
 import { BoardEntity } from '../../../entities/board.entity';
 import { CreateBoardInput } from '../../inputs/create-board-input';
 import { UpdateBoardInput } from '../../inputs/update-board-input';
-import { ColumnService } from 'src/column/services/column/column.service';
+import { ColumnService } from '../../../column/services/column/column.service';
 
 @Resolver()
 export class BoardResolver {

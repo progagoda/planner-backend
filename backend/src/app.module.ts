@@ -13,7 +13,7 @@ import { BoardModule } from './board/board.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,
-      autoSchemaFile: 'schema.gql',
+      autoSchemaFile: true,
       sortSchema: true,
     }),
     TypeOrmModule.forRootAsync({
@@ -30,9 +30,9 @@ import { BoardModule } from './board/board.module';
         synchronize: true,
         autoLoadEntities: true,
         logging: true,
-        // ssl: {
-        //   rejectUnauthorized: false,
-        // },
+        ssl: {
+          rejectUnauthorized: false,
+        },
       }),
     }),
     BoardModule,

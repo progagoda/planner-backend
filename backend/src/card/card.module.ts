@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CardEntity } from '../entities/card.entity';
 import { CardService } from './services/card/card.service';
 import { CardResolver } from './resolvers/card/card.resolver';
-import { ColumnModule } from 'src/column/column.module';
+import { ColumnModule } from '../column/column.module';
 
 @Module({
   imports: [

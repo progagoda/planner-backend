@@ -15,6 +15,7 @@ import { BoardModule } from './board/board.module';
       playground: true,
       autoSchemaFile: true,
       sortSchema: true,
+      introspection: true,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
